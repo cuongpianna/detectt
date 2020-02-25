@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+          integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
+
+</head>
+<body>
+<div class="container ">
+    <div class="form-group" style="margin-top: 50px">
+        <div class="row">
+            <div class="col-8">
+                <input type="text" class="form-control url">
+            </div>
+            <div class="col-4">
+                <button class="btn btn-primary crawl-btn">
+                    Crawl
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <div class="form-group" style="margin-top: 10px">
+        <div class="row">
+            <div class="col-8">
+                <select class="form-control" name="" id="lang">
+                    {%for key, value in languages.items() %}
+                    <option value="{{value}}">{{key}}</option>
+                    {%endfor%}
+                </select>
+            </div>
+            <div class="col-4">
+                <button class="btn detect btn-primary">
+                    Detect
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <div class="form-group pb-1">
+        <label for="">Đoạn văn</label>
+        <textarea class="form-control" name="" id="para" style="height: 400px"></textarea>
+    </div>
+
+    <div id="result">
+
+    </div>
+
+</div>
+<script>
+    $('.crawl-btn').click(function () {
+        $.ajax({
+            type: 'POST',
+            url: '{{url_for("crawl")}}',
+            data: {
+                'url': $('.url').val(),
+
+            },
+            success: function (data) {
+                $('#para').val(data['data']);
+            }
+        })
+    })
+
+    $('button.detect').click(function () {
+        $.ajax({
+            type: 'POST',
+            url: '{{url_for("detect")}}',
+            data: {
+                'lang': $('#lang').val(),
+                'para': $('#para').val()
+            },
+            success: function (data) {
+                if (data['status'] == 'success') {
+                    $('#result').html('<span>Không có lỗi!!<span>');
+                } else {
+                    var html = '<div class="fail">';
+
+                    for (const item in data['data']) {
+                        html += '<div>';
+                        html += '<div>Những từ lỗi</div>';
+                        html += '<span class="msg-lang">';
+                        html += item;
+                        html += ': </span>';
+                        for (const word in data['data'][item]) {
+                            html += '<span class="msg-value">';
+                            html += data['data'][item][word];
+                            html += ', </span>';
+                        }
+
+                    }
+                    html += '</div></div>';
+                    $('#result').html(html);
+                }
+            }
+        })
+    })
+
+</script>
+</body>
+</html>
