@@ -1,0 +1,3 @@
+[console_scripts]
+polygot = polygot.cl_utils:main
+
