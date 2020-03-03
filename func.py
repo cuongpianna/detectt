@@ -3,8 +3,8 @@ from string import digits
 import requests
 from textblob import TextBlob
 from bs4 import BeautifulSoup
+from google.cloud import translate_v2 as translate
 from langid import classify
-from langdetect import detect
 
 
 def crawl(url):
@@ -35,7 +35,7 @@ def format_html(html):
 
 
 CHARACTOR = ['?', '/', ':', '.', ',', ':', '"', "'", ')', '(', '^', '`', '~', '!', '!', '@', '#', '$', '%', '&', '*',
-             '-', '_', '+', '-', '\\', '|',]
+             '-', '_', '+', '-', '\\', '|', '©']
 
 
 def hanlde_string(param):
@@ -46,33 +46,51 @@ def hanlde_string(param):
 
 
 def run(url, code):
+    """
+
+    :param url:
+    :param code:
+    :return:
+    """
     soup = format_html(crawl(url))
+    all_tags = set()
+    for tag in soup.find_all():
+        all_tags.add(tag)
     results = []
-    for tag in soup.find_all(recursive=True):
+    i = 0
+    for tag in all_tags:
+        # print(tag.attrs)
+        i = i + 1
+        if i == 50:
+            break
         result_tag = []
         tag_handle = hanlde_string(tag.text)
         remove_digits = str.maketrans('', '', digits)
         tag_handle = tag_handle.translate(remove_digits).strip()
-        tag_handle.strip('\n')
-        tag_handle.strip('\t')
-        text_list = tag_handle.split(' ')
-        if text_list:
-            for text in text_list:
-                print(text)
-                print(detect(text))
-        #     if len(text) > 1:
-        #         lang = detect(text)
-        #         if lang != code:
-        #             result_tag.append(text)
-        #
-        # if result_tag:
-        #     results.append({
-        #         'tag': tag.name,
-        #         'text': result_tag
-        #     })
-        #
-        # for r in results:
-        #     print(r)
+        tag_handle = tag_handle.split(' ')
+        for text in tag_handle:
+            if len(text) > 2:
+                mod = TextBlob(text)
+                lang = mod.detect_language()
+                if lang != code and text:
+                    result_tag.append({
+                        'text': text,
+                        'lang': lang
+                    })
 
-run('https://kenh14.vn/nong-ha-noi-cho-hoc-sinh-mam-non-den-thpt-nghi-tiep-den-8-3-20200226131135824.chn', 'vi')
+        if result_tag:
+            results.append({
+                'tag_name': tag.name,
+                'tag_class': tag.attrs['class'] if 'class' in tag.attrs else '',
+                'errors': result_tag
+            })
 
+    return results
+
+
+results = run('https://www.vietnamairlines.com/vn/vi/home',
+              'vi')
+for r in results:
+    print('------------')
+    print('\n')
+    print(r)

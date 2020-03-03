@@ -2,11 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="47d45635-1127-4020-b198-26831d396d07" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/detect.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/detect.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test.py" beforeDir="false" afterPath="$PROJECT_DIR$/test.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/func.py" beforeDir="false" afterPath="$PROJECT_DIR$/func.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -35,7 +32,7 @@
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../vinancevn" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
     <property name="node.js.path.for.package.eslint" value="project" />
@@ -76,6 +73,10 @@
       <workItem from="1582806999305" duration="6888000" />
       <workItem from="1582844375578" duration="84000" />
       <workItem from="1582893958285" duration="7215000" />
+      <workItem from="1582977079771" duration="11000" />
+      <workItem from="1582980096766" duration="775000" />
+      <workItem from="1582984319430" duration="2686000" />
+      <workItem from="1582987316868" duration="716000" />
     </task>
     <servers />
   </component>
@@ -83,20 +84,20 @@
     <option name="version" value="1" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="2017" y="91" key="FileChooserDialogImpl" timestamp="1582844458415">
+    <state x="2017" y="91" key="FileChooserDialogImpl" timestamp="1582988429428">
       <screen x="1366" y="-80" width="1920" height="1040" />
     </state>
     <state x="463" y="120" key="FileChooserDialogImpl/0.0.1366.728/1366.-80.1920.1040@0.0.1366.728" timestamp="1582466191713" />
-    <state x="2017" y="91" key="FileChooserDialogImpl/0.0.1366.728/1366.-80.1920.1040@1366.-80.1920.1040" timestamp="1582844458415" />
+    <state x="2017" y="91" key="FileChooserDialogImpl/0.0.1366.728/1366.-80.1920.1040@1366.-80.1920.1040" timestamp="1582988429428" />
     <state x="1625" y="-70" key="SettingsEditor" timestamp="1582893976634">
       <screen x="1366" y="-80" width="1920" height="1040" />
     </state>
     <state x="184" y="7" key="SettingsEditor/0.0.1366.728/1366.-80.1920.1040@0.0.1366.728" timestamp="1582445205731" />
     <state x="1625" y="-70" key="SettingsEditor/0.0.1366.728/1366.-80.1920.1040@1366.-80.1920.1040" timestamp="1582893976634" />
-    <state x="1899" y="190" key="com.intellij.ide.util.TipDialog" timestamp="1582844450083">
+    <state x="1899" y="190" key="com.intellij.ide.util.TipDialog" timestamp="1582977080228">
       <screen x="1366" y="-80" width="1920" height="1040" />
     </state>
     <state x="379" y="189" key="com.intellij.ide.util.TipDialog/0.0.1366.728/1366.-80.1920.1040@0.0.1366.728" timestamp="1582590071874" />
-    <state x="1899" y="190" key="com.intellij.ide.util.TipDialog/0.0.1366.728/1366.-80.1920.1040@1366.-80.1920.1040" timestamp="1582844450083" />
+    <state x="1899" y="190" key="com.intellij.ide.util.TipDialog/0.0.1366.728/1366.-80.1920.1040@1366.-80.1920.1040" timestamp="1582977080228" />
   </component>
 </project>
