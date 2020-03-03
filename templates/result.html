@@ -1,0 +1,13 @@
+{%for result in results%}
+    <div>Tag name: {{result['tag_name']}}</div>
+    <div style="margin-left: 5px">class:  {{result['tag_name']}}</div>
+
+    <div class="errors">
+
+        {%for item in result['errors']%}
+            <span class="error">{{item['lang']}}: </span>
+            <span class="error">{{item['text']}}</span>
+        {%endfor%}
+    </div><br>
+<hr>
+{%endfor%}

@@ -3,7 +3,6 @@ from string import digits
 import requests
 from textblob import TextBlob
 from bs4 import BeautifulSoup
-from google.cloud import translate_v2 as translate
 from langid import classify
 
 
@@ -60,9 +59,9 @@ def run(url, code):
     i = 0
     for tag in all_tags:
         # print(tag.attrs)
-        i = i + 1
-        if i == 50:
-            break
+        # i = i + 1
+        # if i == 3:
+        #     break
         result_tag = []
         tag_handle = hanlde_string(tag.text)
         remove_digits = str.maketrans('', '', digits)
@@ -70,8 +69,9 @@ def run(url, code):
         tag_handle = tag_handle.split(' ')
         for text in tag_handle:
             if len(text) > 2:
-                mod = TextBlob(text)
-                lang = mod.detect_language()
+                # mod = TextBlob(text)
+                # lang = mod.detect_language()
+                lang = classify(text)[0]
                 if lang != code and text:
                     result_tag.append({
                         'text': text,
@@ -88,9 +88,10 @@ def run(url, code):
     return results
 
 
-results = run('https://www.vietnamairlines.com/vn/vi/home',
-              'vi')
-for r in results:
-    print('------------')
-    print('\n')
-    print(r)
+if __name__ == '__main__':
+    results = run('https://www.vietnamairlines.com/vn/vi/home',
+                  'vi')
+    for r in results:
+        print('------------')
+        print('\n')
+        print(r)
