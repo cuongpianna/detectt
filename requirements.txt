@@ -37,7 +37,7 @@ jieba3k==0.35.1
 Jinja2==2.11.1
 langdetect==1.0.7
 langid==1.1.6
-lxml==4.5.0
+lxml==4.6.2
 MarkupSafe==1.1.1
 monotonic==1.5
 more-itertools==8.2.0
